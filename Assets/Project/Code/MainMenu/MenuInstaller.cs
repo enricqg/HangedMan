@@ -46,7 +46,7 @@ public class MenuInstaller : MonoBehaviour
         //EVENT DISPATCHER
         var eventDispatcher = new EventDispatcherService();
 
-        //USe CASES
+        //USE CASES
         _audioUseCase = new AudioUseCase();
 
         //CONTROLLERS

@@ -20,7 +20,7 @@ namespace Code
                 _events.Add(type, null);
             }
 
-            //_events[type] += callback;
+            _events[type] += callback;
         }
 
         public void Unsubscribe<T>(Action<T> callback)
@@ -28,7 +28,7 @@ namespace Code
             var type = typeof(T);
             if (_events.ContainsKey(type))
             {
-                //_events[type] -= callback;
+                _events[type] -= callback;
             }
         }
 
@@ -38,7 +38,7 @@ namespace Code
             if (_events.ContainsKey(type))
             {
                 var callbakcs = _events[type];
-                //callbakcs(arg);
+                callbakcs(arg);
             }                  
         }
     }

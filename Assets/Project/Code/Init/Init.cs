@@ -47,19 +47,17 @@ public class Init : MonoBehaviour
         //presenter
         var initMenuPresenter = new InitMenuPresenter(initMenuViewModel, eventDispatcher);
         _disposables.Add(initMenuPresenter);
-
-
     }
 
     void Start()
     {
-        if (_readFromPlayerPrefsUseCase.Read().id == null || _readFromPlayerPrefsUseCase.Read().id == "")
+        if (_readFromPlayerPrefsUseCase.Read().id == null || _readFromPlayerPrefsUseCase.Read().id == "" 
+            || _readFromPlayerPrefsUseCase.Read().email == null || _readFromPlayerPrefsUseCase.Read().email == "")
         {
             _anonimousUseCase.Authenticate(new UserInfo());
         }
         else
         {
-            //login
             _loginUseCase.Authenticate(_readFromPlayerPrefsUseCase.Read());
         }
 
@@ -68,7 +66,7 @@ public class Init : MonoBehaviour
 
     private void OnDestroy()
     {
-        foreach(var disposable in _disposables)
+        foreach (var disposable in _disposables)
         {
             disposable.Dispose();
         }
