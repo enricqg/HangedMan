@@ -12,19 +12,26 @@ public class SettingsMenuController
     private readonly AudioMixer _sfxMixer, _bgmMixer;
 
     IAudioUseCase _audioUseCase;
+    IActivatePushNotificationsUseCase _notificationsUseCase;
+
+    private readonly PushNotifications _pushNotificationsGameObejct;
 
 
     public SettingsMenuController(SettingsMenuViewModel settingsMenuViewModel,
         MainMenuViewModel mainMenuViewModel,
         AudioMixer sfxMixer,
         AudioMixer bgmMixer,
-        IAudioUseCase audioUseCase)
+        IAudioUseCase audioUseCase,
+        IActivatePushNotificationsUseCase notificationsUseCase,
+        PushNotifications pushNotificationsGameObejct)
     {
         _settingsMenuViewModel = settingsMenuViewModel;
         _mainMenuViewModel = mainMenuViewModel;
         _sfxMixer = sfxMixer;
         _bgmMixer = bgmMixer;
         _audioUseCase = audioUseCase;
+        _notificationsUseCase = notificationsUseCase;
+        _pushNotificationsGameObejct = pushNotificationsGameObejct;
 
         _settingsMenuViewModel
             .BgmButtonPressed
@@ -44,9 +51,10 @@ public class SettingsMenuController
 
         _settingsMenuViewModel
             .PushNotificationsButtonPressed
-            .Subscribe((_) =>
+            .Subscribe((active) =>
             {
                 //use case - push notifications enable/disable
+                _notificationsUseCase.ActivatePushNotifications(_pushNotificationsGameObejct, active);
             });
 
         _settingsMenuViewModel

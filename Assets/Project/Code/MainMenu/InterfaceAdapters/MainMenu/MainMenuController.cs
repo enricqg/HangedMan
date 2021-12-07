@@ -10,21 +10,26 @@ public class MainMenuController
     private readonly LeaderboardMenuViewModel _leaderboardMenuViewModel;
     private readonly LoginPopUpViewModel _loginPopUpViewModel;
 
+    private readonly IChangeSceneUseCase _changeSceneUseCase;
+
     public MainMenuController(MainMenuViewModel mainMenuViewModel,
         SettingsMenuViewModel settingsMenuViewModel,
         LeaderboardMenuViewModel leaderboardMenuViewModel,
-        LoginPopUpViewModel loginPopUpViewModel)
+        LoginPopUpViewModel loginPopUpViewModel,
+        IChangeSceneUseCase changeSceneUseCase)
     {
         _mainMenuViewModel = mainMenuViewModel;
         _settingsMenuViewModel = settingsMenuViewModel;
         _leaderboardMenuViewModel = leaderboardMenuViewModel;
         _loginPopUpViewModel = loginPopUpViewModel;
+        _changeSceneUseCase = changeSceneUseCase;
 
         _mainMenuViewModel
             .PlayButtonPressed
             .Subscribe((_) =>
             {
                 //change scene
+                _changeSceneUseCase.ChangeScene(2);
 
             });
 

@@ -17,19 +17,27 @@ public class MenuInstaller : MonoBehaviour
 
     [SerializeField] private AudioMixer _sfxMixer, _bgmMixer;
 
+    [SerializeField] private PushNotifications _pushNotificationsPrefab;
+
     private IAuthUseCase _loginUseCase, _registerUseCase;
 
     private IAudioUseCase _audioUseCase;
+
+    private IActivatePushNotificationsUseCase _notificationsUseCase;
+
+    private IChangeSceneUseCase _changeSceneUseCase;
 
     private void Awake()
     {
         //INSTANTIATE
         Instantiate(_backgroundPrefab, _canvasParent);
+        var pushNotifications = Instantiate(_pushNotificationsPrefab);
 
         var mainMenuView = Instantiate(_mainMenuPrefab, _canvasParent);
         var leaderbaordMenuView = Instantiate(_leaderboardMenuPrefab, _canvasParent);
         var settingsMenuView = Instantiate(_settingsMenuPrefab, _canvasParent);
         var loginPopUpView = Instantiate(_loginPopUpPrefab, _canvasParent);
+
 
         //VIEW MODELS
         var mainMenuViewModel = new MainMenuViewModel();
@@ -48,10 +56,12 @@ public class MenuInstaller : MonoBehaviour
 
         //USE CASES
         _audioUseCase = new AudioUseCase();
+        _notificationsUseCase = new ActivatePushNotificationsUseCase();
+        _changeSceneUseCase = new ChangeSceneUseCase();
 
         //CONTROLLERS
-        new MainMenuController(mainMenuViewModel, settingsMenuViewModel, leaderbaordMenuViewModel, loginPopUpViewModel);
-        new SettingsMenuController(settingsMenuViewModel, mainMenuViewModel, _sfxMixer, _bgmMixer, _audioUseCase);
+        new MainMenuController(mainMenuViewModel, settingsMenuViewModel, leaderbaordMenuViewModel, loginPopUpViewModel, _changeSceneUseCase);
+        new SettingsMenuController(settingsMenuViewModel, mainMenuViewModel, _sfxMixer, _bgmMixer, _audioUseCase, _notificationsUseCase, pushNotifications);
         new LeaderboardMenuController(leaderbaordMenuViewModel, mainMenuViewModel);
         new LoginPopUpController(loginPopUpViewModel);
 
