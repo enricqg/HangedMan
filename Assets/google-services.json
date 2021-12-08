@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "512566214326",
+    "firebase_url": "https://hangedman-6fd3e-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "hangedman-6fd3e",
+    "storage_bucket": "hangedman-6fd3e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:512566214326:android:93a405f530fc32b3493017",
+        "android_client_info": {
+          "package_name": "com.quilabertrivero.hangedman"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "512566214326-c6lkl0kodgh99dg04t13i6aq1ocusv0v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvNmZ16mUgryFb3pMYtbiWEFLyLmruHYw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "512566214326-c6lkl0kodgh99dg04t13i6aq1ocusv0v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
