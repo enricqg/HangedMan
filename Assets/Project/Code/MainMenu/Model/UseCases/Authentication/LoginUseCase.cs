@@ -33,10 +33,8 @@ public class LoginUseCase : IAuthUseCase
             Debug.LogFormat("User signed in successfully: {0} ({1})",
                 newUser.DisplayName, newUser.UserId);
         });
-        Debug.Log("login use case done");
-        Debug.Log(user);
 
-        _eventDispatcherService.Dispatch<UserInfo>(user);
+        _eventDispatcherService.Dispatch<KeyValuePair<UserInfo, string>>(new KeyValuePair<UserInfo, string>(user, "Login successful"));
 
     }
 }

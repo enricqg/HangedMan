@@ -8,7 +8,7 @@ using DG.Tweening;
 public class SettingsMenuView : MonoBehaviour
 {
     [SerializeField] private Toggle _bgmToggle, _sfxToggle, _pushNotificationsToggle;
-    [SerializeField] private Button _backButton;
+    [SerializeField] private Button _backButton, _loginRegisterPopUpButton;
 
     private SettingsMenuViewModel _viewModel;
     public void SetViewModel(SettingsMenuViewModel viewModel)
@@ -33,6 +33,11 @@ public class SettingsMenuView : MonoBehaviour
         _backButton.onClick.AddListener(() =>
         {
             _viewModel.BackButtonPressed.Execute();
+        });
+
+        _loginRegisterPopUpButton.onClick.AddListener(() =>
+        {
+            _viewModel.LoginRegisterPopUpButtonPressed.Execute();
         });
 
 

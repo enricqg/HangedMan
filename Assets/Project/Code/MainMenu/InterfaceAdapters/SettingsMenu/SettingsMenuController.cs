@@ -16,6 +16,8 @@ public class SettingsMenuController
 
     private readonly PushNotifications _pushNotificationsGameObejct;
 
+    private readonly LoginRegisterPopUpViewModel _loginRegisterPopUpViewModel;
+
 
     public SettingsMenuController(SettingsMenuViewModel settingsMenuViewModel,
         MainMenuViewModel mainMenuViewModel,
@@ -23,7 +25,8 @@ public class SettingsMenuController
         AudioMixer bgmMixer,
         IAudioUseCase audioUseCase,
         IActivatePushNotificationsUseCase notificationsUseCase,
-        PushNotifications pushNotificationsGameObejct)
+        PushNotifications pushNotificationsGameObejct,
+        LoginRegisterPopUpViewModel loginRegisterPopUpViewModel)
     {
         _settingsMenuViewModel = settingsMenuViewModel;
         _mainMenuViewModel = mainMenuViewModel;
@@ -32,6 +35,7 @@ public class SettingsMenuController
         _audioUseCase = audioUseCase;
         _notificationsUseCase = notificationsUseCase;
         _pushNotificationsGameObejct = pushNotificationsGameObejct;
+        _loginRegisterPopUpViewModel = loginRegisterPopUpViewModel;
 
         _settingsMenuViewModel
             .BgmButtonPressed
@@ -63,6 +67,14 @@ public class SettingsMenuController
             {
                 _settingsMenuViewModel.IsVisible.Value = false;
                 _mainMenuViewModel.IsVisible.Value = true;
+            });
+
+        _settingsMenuViewModel
+            .LoginRegisterPopUpButtonPressed
+            .Subscribe((_) =>
+            {
+                //show pop up
+                _loginRegisterPopUpViewModel.IsVisible.Value = true;
             });
     }
 }

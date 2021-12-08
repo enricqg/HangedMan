@@ -404,7 +404,8 @@ MonoBehaviour:
   _leaderboardMenuPrefab: {fileID: 355089830264833919, guid: 002e8159a07efd8468ad149129a18e33, type: 3}
   _mainMenuPrefab: {fileID: -4263780268094479030, guid: 069400b405474b340a14fd5bae07e0f0, type: 3}
   _settingsMenuPrefab: {fileID: -88638907058288930, guid: 0eeb32596ad4f6347b329453225b454e, type: 3}
-  _loginPopUpPrefab: {fileID: 840153397714565373, guid: a21ce71783b594c47a3268fa309ca0d3, type: 3}
+  _usernamePopUp: {fileID: 840153397714565373, guid: a21ce71783b594c47a3268fa309ca0d3, type: 3}
+  _loginRegisterPopUp: {fileID: 8957444384010090013, guid: 4cec9fbb6ffdd8d4ca492dd473086b82, type: 3}
   _backgroundPrefab: {fileID: 5700503162385747902, guid: af87393a194dde042b19644d169d7cde, type: 3}
   _sfxMixer: {fileID: 24100000, guid: d520f7fdc10828f4baf8a7bf072e7843, type: 2}
   _bgmMixer: {fileID: 24100000, guid: 12e90ac086ce6874da06df03755a2c07, type: 2}

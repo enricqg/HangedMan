@@ -11,7 +11,8 @@ public class MenuInstaller : MonoBehaviour
     [SerializeField] private LeaderboardMenuView _leaderboardMenuPrefab;
     [SerializeField] private MainMenuView _mainMenuPrefab;
     [SerializeField] private SettingsMenuView _settingsMenuPrefab;
-    [SerializeField] private LoginPopUpView _loginPopUpPrefab;
+    [SerializeField] private UsernamePopUpView _usernamePopUp;
+    [SerializeField] private LoginRegisterPopUpView _loginRegisterPopUp;
 
     [SerializeField] private GameObject _backgroundPrefab;
 
@@ -21,11 +22,18 @@ public class MenuInstaller : MonoBehaviour
 
     private IAuthUseCase _loginUseCase, _registerUseCase;
 
+    private ICheckIfRegisteredUseCase _checkIfRegisteredUseCase;
+
     private IAudioUseCase _audioUseCase;
 
     private IActivatePushNotificationsUseCase _notificationsUseCase;
 
     private IChangeSceneUseCase _changeSceneUseCase;
+
+    private IUsernameUseCase _usernameUseCase;
+
+    private IWriteToPlayerPrefsUseCase _writeToPlayerPrefsUseCase;
+    private IReadFromPlayerPrefsUseCase _readFromPlayerPrefsUseCase;
 
     private void Awake()
     {
@@ -36,38 +44,48 @@ public class MenuInstaller : MonoBehaviour
         var mainMenuView = Instantiate(_mainMenuPrefab, _canvasParent);
         var leaderbaordMenuView = Instantiate(_leaderboardMenuPrefab, _canvasParent);
         var settingsMenuView = Instantiate(_settingsMenuPrefab, _canvasParent);
-        var loginPopUpView = Instantiate(_loginPopUpPrefab, _canvasParent);
+        var usernamePopUpView = Instantiate(_usernamePopUp, _canvasParent);
+        var loginRegisterPopUpView = Instantiate(_loginRegisterPopUp, _canvasParent);
 
 
         //VIEW MODELS
         var mainMenuViewModel = new MainMenuViewModel();
         var leaderbaordMenuViewModel = new LeaderboardMenuViewModel();
         var settingsMenuViewModel = new SettingsMenuViewModel();
-        var loginPopUpViewModel = new LoginPopUpViewModel();
+        var usernamePopUpViewModel = new UsernamePopUpViewModel();
+        var loginRegisterPopUpViewModel = new LoginRegisterPopUpViewModel();
 
         //---set view model
         mainMenuView.SetViewModel(mainMenuViewModel);
         leaderbaordMenuView.SetViewModel(leaderbaordMenuViewModel);
         settingsMenuView.SetViewModel(settingsMenuViewModel);
-        loginPopUpView.SetViewModel(loginPopUpViewModel);
+        usernamePopUpView.SetViewModel(usernamePopUpViewModel);
+        loginRegisterPopUpView.SetViewModel(loginRegisterPopUpViewModel);
 
         //EVENT DISPATCHER
         var eventDispatcher = new EventDispatcherService();
 
         //USE CASES
+        _loginUseCase = new LoginUseCase(eventDispatcher);
+        _registerUseCase = new RegisterUseCase(eventDispatcher);
+        _checkIfRegisteredUseCase = new CheckIfRegisteredUseCase();
         _audioUseCase = new AudioUseCase();
         _notificationsUseCase = new ActivatePushNotificationsUseCase();
         _changeSceneUseCase = new ChangeSceneUseCase();
+        _usernameUseCase = new UsernameUseCase();
+        _writeToPlayerPrefsUseCase = new WriteToPlayerPrefsUseCase();
+        _readFromPlayerPrefsUseCase = new ReadFromPlayerPrefsUseCase();
 
         //CONTROLLERS
-        new MainMenuController(mainMenuViewModel, settingsMenuViewModel, leaderbaordMenuViewModel, loginPopUpViewModel, _changeSceneUseCase);
-        new SettingsMenuController(settingsMenuViewModel, mainMenuViewModel, _sfxMixer, _bgmMixer, _audioUseCase, _notificationsUseCase, pushNotifications);
+        new MainMenuController(mainMenuViewModel, settingsMenuViewModel, leaderbaordMenuViewModel, usernamePopUpViewModel, _changeSceneUseCase);
+        new SettingsMenuController(settingsMenuViewModel, mainMenuViewModel, _sfxMixer, _bgmMixer, _audioUseCase, _notificationsUseCase, pushNotifications, loginRegisterPopUpViewModel);
         new LeaderboardMenuController(leaderbaordMenuViewModel, mainMenuViewModel);
-        new LoginPopUpController(loginPopUpViewModel);
+        new UsernamePopUpController(usernamePopUpViewModel, _usernameUseCase, _writeToPlayerPrefsUseCase, _readFromPlayerPrefsUseCase);
+        new LoginRegisterPopUpController(loginRegisterPopUpViewModel, _checkIfRegisteredUseCase, _loginUseCase, _registerUseCase, _writeToPlayerPrefsUseCase);
 
 
         //PRESENTERS
-
+        var loginPopUpPresenter = new LoginRegisterPopUpPresenter(loginRegisterPopUpViewModel, eventDispatcher);
     }
 
     // Start is called before the first frame update

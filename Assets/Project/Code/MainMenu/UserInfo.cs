@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Firebase.Firestore;
 
+[FirestoreData]
 public class UserInfo
 {
-    public string id;
-    public string email;
+    [FirestoreProperty]
+    public string id { get; set; }
+    [FirestoreProperty]
+    public string email { get; set; }
     public string password;
 
     public UserInfo()

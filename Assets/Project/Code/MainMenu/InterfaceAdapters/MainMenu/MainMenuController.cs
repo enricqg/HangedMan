@@ -8,20 +8,20 @@ public class MainMenuController
     private readonly MainMenuViewModel _mainMenuViewModel;
     private readonly SettingsMenuViewModel _settingsMenuViewModel;
     private readonly LeaderboardMenuViewModel _leaderboardMenuViewModel;
-    private readonly LoginPopUpViewModel _loginPopUpViewModel;
+    private readonly UsernamePopUpViewModel _usernamePopUpViewModel;
 
     private readonly IChangeSceneUseCase _changeSceneUseCase;
 
     public MainMenuController(MainMenuViewModel mainMenuViewModel,
         SettingsMenuViewModel settingsMenuViewModel,
         LeaderboardMenuViewModel leaderboardMenuViewModel,
-        LoginPopUpViewModel loginPopUpViewModel,
+        UsernamePopUpViewModel usernamePopUpViewModel,
         IChangeSceneUseCase changeSceneUseCase)
     {
         _mainMenuViewModel = mainMenuViewModel;
         _settingsMenuViewModel = settingsMenuViewModel;
         _leaderboardMenuViewModel = leaderboardMenuViewModel;
-        _loginPopUpViewModel = loginPopUpViewModel;
+        _usernamePopUpViewModel = usernamePopUpViewModel;
         _changeSceneUseCase = changeSceneUseCase;
 
         _mainMenuViewModel
@@ -48,7 +48,7 @@ public class MainMenuController
             .Subscribe((_) =>
             {
                 //show pop-up
-                _loginPopUpViewModel.IsVisible.Value = true;
+                _usernamePopUpViewModel.IsVisible.Value = true;
 
                 //login usecase
             });

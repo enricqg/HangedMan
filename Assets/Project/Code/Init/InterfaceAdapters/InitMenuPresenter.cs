@@ -15,17 +15,16 @@ public class InitMenuPresenter: IDisposable
         _viewModel = viewModel;
         _eventDispatcherService = eventDispatcherService;
 
-        _eventDispatcherService.Subscribe<UserInfo>(OnUserAuthenticated);
+        _eventDispatcherService.Subscribe<KeyValuePair<UserInfo, string>>(OnUserAuthenticated);
     }
 
-    void OnUserAuthenticated(UserInfo user)
+    void OnUserAuthenticated(KeyValuePair<UserInfo, string> user)
     {
-        Debug.Log("subscribed");
-        _viewModel.IsAuthenticated.Execute(user);
+        _viewModel.IsAuthenticated.Execute(user.Key);
     }
 
     public void Dispose()
     {
-        _eventDispatcherService.Unsubscribe<UserInfo>(OnUserAuthenticated);
+        _eventDispatcherService.Unsubscribe<KeyValuePair<UserInfo, string>>(OnUserAuthenticated);
     }
 }

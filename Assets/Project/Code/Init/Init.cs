@@ -35,9 +35,9 @@ public class Init : MonoBehaviour
         var eventDispatcher = new EventDispatcherService();
 
         //use cases
-        _anonimousUseCase = new AnonimousUseCase(eventDispatcher);
-        _loginUseCase = new LoginUseCase(eventDispatcher);
         _readFromPlayerPrefsUseCase = new ReadFromPlayerPrefsUseCase();
+        _anonimousUseCase = new AnonimousUseCase(eventDispatcher, _readFromPlayerPrefsUseCase);
+        _loginUseCase = new LoginUseCase(eventDispatcher);
         _writeToPlayerPrefsUseCase = new WriteToPlayerPrefsUseCase();
         _changeSceneUseCase = new ChangeSceneUseCase();
 

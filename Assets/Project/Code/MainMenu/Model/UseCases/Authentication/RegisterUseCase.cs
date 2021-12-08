@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Firebase.Auth;
+using Code;
 
 public class RegisterUseCase : IAuthUseCase
 {
+    private IEventDispatcherService _eventDispatcherService;
+    public RegisterUseCase(IEventDispatcherService eventDispatcherService)
+    {
+        _eventDispatcherService = eventDispatcherService;
+    }
     public void Authenticate(UserInfo user)
     {
         FirebaseAuth.DefaultInstance.CreateUserWithEmailAndPasswordAsync(user.email, user.password).ContinueWith(task => {
@@ -26,5 +32,8 @@ public class RegisterUseCase : IAuthUseCase
 
 
         });
+
+        _eventDispatcherService.Dispatch<KeyValuePair<UserInfo, string>>(new KeyValuePair<UserInfo, string>(user, "Register successful"));
+
     }
 }

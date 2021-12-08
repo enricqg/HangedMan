@@ -8,16 +8,25 @@ using Code;
 public class AnonimousUseCase : IAuthUseCase
 {
     private readonly IEventDispatcherService _eventDispatcherService;
-    public AnonimousUseCase(IEventDispatcherService eventDispatcherService)
+
+    private IReadFromPlayerPrefsUseCase _readFromPlayerPrefsUseCase;
+    public AnonimousUseCase(IEventDispatcherService eventDispatcherService, IReadFromPlayerPrefsUseCase readFromPlayerPrefsUseCase)
     {
         _eventDispatcherService = eventDispatcherService;
+        _readFromPlayerPrefsUseCase = readFromPlayerPrefsUseCase;
     }
 
     public void Authenticate(UserInfo user)
     {
         Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
+        if (auth.CurrentUser != null)
+        {
+            _eventDispatcherService.Dispatch<KeyValuePair<UserInfo, string>>(new KeyValuePair<UserInfo, string>(_readFromPlayerPrefsUseCase.Read(), "Authentication successful"));
 
-        auth.SignInAnonymouslyAsync()
+        }
+        else
+        {
+            auth.SignInAnonymouslyAsync()
            .ContinueWithOnMainThread(task =>
            {
                if (!task.IsFaulted)
@@ -34,8 +43,10 @@ public class AnonimousUseCase : IAuthUseCase
                Debug.Log(auth.CurrentUser.UserId);
 
 
-               UserInfo u = new UserInfo("1234");
-               _eventDispatcherService.Dispatch<UserInfo>(u);
+               UserInfo u = new UserInfo(auth.CurrentUser.UserId);
+               _eventDispatcherService.Dispatch<KeyValuePair<UserInfo, string>>(new KeyValuePair<UserInfo, string>(u, "Authentication successful"));
            });
+        }
+
     }
 }
