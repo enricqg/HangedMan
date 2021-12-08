@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Code;
-
 public class Init : MonoBehaviour
 {
     [SerializeField] private RectTransform _canvasParent;
@@ -17,6 +16,8 @@ public class Init : MonoBehaviour
     private IWriteToPlayerPrefsUseCase _writeToPlayerPrefsUseCase;
 
     private IChangeSceneUseCase _changeSceneUseCase;
+
+    private IEncryptDecryptDataUseCase _encryptDecryptDataUseCase;
 
     private List<IDisposable> _disposables = new List<IDisposable>();
 
@@ -35,10 +36,11 @@ public class Init : MonoBehaviour
         var eventDispatcher = new EventDispatcherService();
 
         //use cases
-        _readFromPlayerPrefsUseCase = new ReadFromPlayerPrefsUseCase();
+        _encryptDecryptDataUseCase = new EncryptDecryptDataUseCase();
+        _readFromPlayerPrefsUseCase = new ReadFromPlayerPrefsUseCase(_encryptDecryptDataUseCase);
         _anonimousUseCase = new AnonimousUseCase(eventDispatcher, _readFromPlayerPrefsUseCase);
         _loginUseCase = new LoginUseCase(eventDispatcher);
-        _writeToPlayerPrefsUseCase = new WriteToPlayerPrefsUseCase();
+        _writeToPlayerPrefsUseCase = new WriteToPlayerPrefsUseCase(_encryptDecryptDataUseCase);
         _changeSceneUseCase = new ChangeSceneUseCase();
 
         //controller

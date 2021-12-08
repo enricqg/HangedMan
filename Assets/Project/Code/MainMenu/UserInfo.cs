@@ -8,7 +8,6 @@ public class UserInfo
 {
     [FirestoreProperty]
     public string id { get; set; }
-    [FirestoreProperty]
     public string email { get; set; }
     public string password;
 

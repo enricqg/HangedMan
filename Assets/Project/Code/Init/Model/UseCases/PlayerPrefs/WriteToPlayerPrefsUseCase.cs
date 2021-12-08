@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class WriteToPlayerPrefsUseCase : IWriteToPlayerPrefsUseCase
 {
+    IEncryptDecryptDataUseCase _encryptDecryptUseCase;
+    public WriteToPlayerPrefsUseCase(IEncryptDecryptDataUseCase encryptDecryptUseCase)
+    {
+        _encryptDecryptUseCase = encryptDecryptUseCase;
+    }
+
     public void Write(UserInfo user)
     {
-        PlayerPrefs.SetString("id", user.id);
-        PlayerPrefs.SetString("username", user.email);
-        PlayerPrefs.SetString("password", user.password);
+        PlayerPrefs.SetString("id", _encryptDecryptUseCase.EncryptDecrypt(user.id));
+        PlayerPrefs.SetString("username", _encryptDecryptUseCase.EncryptDecrypt(user.email));
+        PlayerPrefs.SetString("password", _encryptDecryptUseCase.EncryptDecrypt(user.password));
 
         PlayerPrefs.Save();
     }

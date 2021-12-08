@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using System;
 using Code;
 
 public class MenuInstaller : MonoBehaviour
@@ -34,6 +35,12 @@ public class MenuInstaller : MonoBehaviour
 
     private IWriteToPlayerPrefsUseCase _writeToPlayerPrefsUseCase;
     private IReadFromPlayerPrefsUseCase _readFromPlayerPrefsUseCase;
+
+    private IGetLeaderboardInfoUseCase _getLeaderboardInfoUseCase;
+
+    private IEncryptDecryptDataUseCase _encryptDecryptDataUseCase;
+
+    private List<IDisposable> _disposables = new List<IDisposable>();
 
     private void Awake()
     {
@@ -73,25 +80,38 @@ public class MenuInstaller : MonoBehaviour
         _notificationsUseCase = new ActivatePushNotificationsUseCase();
         _changeSceneUseCase = new ChangeSceneUseCase();
         _usernameUseCase = new UsernameUseCase();
-        _writeToPlayerPrefsUseCase = new WriteToPlayerPrefsUseCase();
-        _readFromPlayerPrefsUseCase = new ReadFromPlayerPrefsUseCase();
+        _encryptDecryptDataUseCase = new EncryptDecryptDataUseCase();
+        _writeToPlayerPrefsUseCase = new WriteToPlayerPrefsUseCase(_encryptDecryptDataUseCase);
+        _readFromPlayerPrefsUseCase = new ReadFromPlayerPrefsUseCase(_encryptDecryptDataUseCase);
+        _getLeaderboardInfoUseCase = new GetLeaderboardInfoUseCase(eventDispatcher);
 
         //CONTROLLERS
         new MainMenuController(mainMenuViewModel, settingsMenuViewModel, leaderbaordMenuViewModel, usernamePopUpViewModel, _changeSceneUseCase);
         new SettingsMenuController(settingsMenuViewModel, mainMenuViewModel, _sfxMixer, _bgmMixer, _audioUseCase, _notificationsUseCase, pushNotifications, loginRegisterPopUpViewModel);
-        new LeaderboardMenuController(leaderbaordMenuViewModel, mainMenuViewModel);
+        new LeaderboardMenuController(leaderbaordMenuViewModel, mainMenuViewModel, _getLeaderboardInfoUseCase);
         new UsernamePopUpController(usernamePopUpViewModel, _usernameUseCase, _writeToPlayerPrefsUseCase, _readFromPlayerPrefsUseCase);
         new LoginRegisterPopUpController(loginRegisterPopUpViewModel, _checkIfRegisteredUseCase, _loginUseCase, _registerUseCase, _writeToPlayerPrefsUseCase);
 
 
         //PRESENTERS
         var loginPopUpPresenter = new LoginRegisterPopUpPresenter(loginRegisterPopUpViewModel, eventDispatcher);
+        _disposables.Add(loginPopUpPresenter);
+        var leaderbaordMenuPresenter = new LeaderboardMenuPresenter(leaderbaordMenuViewModel, eventDispatcher);
+        _disposables.Add(leaderbaordMenuPresenter);
     }
 
     // Start is called before the first frame update
     void Start()
     {
 
+    }
+
+    private void OnDestroy()
+    {
+        foreach (var disposable in _disposables)
+        {
+            disposable.Dispose();
+        }
     }
 
 }

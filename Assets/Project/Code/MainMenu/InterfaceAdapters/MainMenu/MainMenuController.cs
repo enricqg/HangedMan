@@ -60,6 +60,7 @@ public class MainMenuController
                 //change menu
                 _mainMenuViewModel.IsVisible.Value = false;
                 _leaderboardMenuViewModel.IsVisible.Value = true;
+                _leaderboardMenuViewModel.LeaderboardUpdate.Execute();
 
             });
     }

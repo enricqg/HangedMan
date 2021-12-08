@@ -6,11 +6,15 @@ using UniRx;
 public class LeaderboardMenuViewModel 
 {
     public readonly ReactiveCommand BackButtonPressed;
+    public readonly ReactiveCommand LeaderboardUpdate;
     public readonly ReactiveProperty<bool> IsVisible;
+    public readonly ReactiveCommand<Dictionary<string, Dictionary<string, string>>> UpdateValues;
 
     public LeaderboardMenuViewModel()
     {
         BackButtonPressed = new ReactiveCommand();
+        LeaderboardUpdate = new ReactiveCommand();
+        UpdateValues = new ReactiveCommand<Dictionary<string, Dictionary<string, string>>>();
 
         IsVisible = new ReactiveProperty<bool>(false);
     }
