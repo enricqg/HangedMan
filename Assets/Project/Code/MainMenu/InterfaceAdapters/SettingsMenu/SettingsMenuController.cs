@@ -14,9 +14,14 @@ public class SettingsMenuController
     IAudioUseCase _audioUseCase;
     IActivatePushNotificationsUseCase _notificationsUseCase;
 
-    private readonly PushNotifications _pushNotificationsGameObejct;
+    private IReadFromPlayerPrefsUseCase _readFromPlayerPrefsUseCase;
+    private IWriteToPlayerPrefsUseCase _writeToPlayerPrefsUseCase;
+    private IUpdateUserUseCase _updateUserUseCase;
+
+    private readonly PushNotifications _pushNotifications;
 
     private readonly LoginRegisterPopUpViewModel _loginRegisterPopUpViewModel;
+    
 
 
     public SettingsMenuController(SettingsMenuViewModel settingsMenuViewModel,
@@ -25,8 +30,11 @@ public class SettingsMenuController
         AudioMixer bgmMixer,
         IAudioUseCase audioUseCase,
         IActivatePushNotificationsUseCase notificationsUseCase,
-        PushNotifications pushNotificationsGameObejct,
-        LoginRegisterPopUpViewModel loginRegisterPopUpViewModel)
+        PushNotifications pushNotifications,
+        LoginRegisterPopUpViewModel loginRegisterPopUpViewModel,
+        IReadFromPlayerPrefsUseCase readFromPlayerPrefsUseCase,
+        IWriteToPlayerPrefsUseCase writeToPlayerPrefsUseCase,
+        IUpdateUserUseCase updateUserUseCase)
     {
         _settingsMenuViewModel = settingsMenuViewModel;
         _mainMenuViewModel = mainMenuViewModel;
@@ -34,15 +42,18 @@ public class SettingsMenuController
         _bgmMixer = bgmMixer;
         _audioUseCase = audioUseCase;
         _notificationsUseCase = notificationsUseCase;
-        _pushNotificationsGameObejct = pushNotificationsGameObejct;
+        _pushNotifications = pushNotifications;
         _loginRegisterPopUpViewModel = loginRegisterPopUpViewModel;
+        _readFromPlayerPrefsUseCase = readFromPlayerPrefsUseCase;
+        _writeToPlayerPrefsUseCase = writeToPlayerPrefsUseCase;
+        _updateUserUseCase = updateUserUseCase;
 
         _settingsMenuViewModel
             .BgmButtonPressed
             .Subscribe((active) =>
             {
                 //use case - bgm audio
-                _audioUseCase.ChangeVolume(_bgmMixer, active);
+                _audioUseCase.ChangeVolume(_bgmMixer, active,_readFromPlayerPrefsUseCase,_writeToPlayerPrefsUseCase,_updateUserUseCase);
             });
 
         _settingsMenuViewModel
@@ -50,7 +61,7 @@ public class SettingsMenuController
             .Subscribe((active) =>
             {
                 //use case - sfx audio
-                _audioUseCase.ChangeVolume(_sfxMixer, active);
+                _audioUseCase.ChangeVolume(_sfxMixer, active,_readFromPlayerPrefsUseCase,_writeToPlayerPrefsUseCase,_updateUserUseCase);
             });
 
         _settingsMenuViewModel
@@ -58,7 +69,7 @@ public class SettingsMenuController
             .Subscribe((active) =>
             {
                 //use case - push notifications enable/disable
-                _notificationsUseCase.ActivatePushNotifications(_pushNotificationsGameObejct, active);
+                _notificationsUseCase.ActivatePushNotifications(_pushNotifications, active,_readFromPlayerPrefsUseCase,_writeToPlayerPrefsUseCase,_updateUserUseCase);
             });
 
         _settingsMenuViewModel

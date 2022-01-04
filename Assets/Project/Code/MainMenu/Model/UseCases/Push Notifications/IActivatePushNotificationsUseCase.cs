@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IActivatePushNotificationsUseCase
 {
-    public void ActivatePushNotifications(PushNotifications pushNotificationsGameObject, bool active);
+    public void ActivatePushNotifications(PushNotifications pushNotificationsGameObject, bool active, IReadFromPlayerPrefsUseCase readFromPlayerPrefsUseCase, IWriteToPlayerPrefsUseCase writeToPlayerPrefsUseCase, IUpdateUserUseCase updateUserUseCase);
 }

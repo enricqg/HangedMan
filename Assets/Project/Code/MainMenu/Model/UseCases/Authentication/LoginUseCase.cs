@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Firebase.Auth;
 using Code;
+using Firebase.Extensions;
 
 public class LoginUseCase : IAuthUseCase
 {
@@ -17,7 +18,7 @@ public class LoginUseCase : IAuthUseCase
     {
         Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
 
-        auth.SignInWithEmailAndPasswordAsync(user.email, user.password).ContinueWith(task => {
+        auth.SignInWithEmailAndPasswordAsync(user.email, user.password).ContinueWithOnMainThread(task => {
             if (task.IsCanceled)
             {
                 Debug.LogError("SignInWithEmailAndPasswordAsync was canceled.");

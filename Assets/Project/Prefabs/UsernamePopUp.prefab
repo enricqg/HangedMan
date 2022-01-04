@@ -694,6 +694,7 @@ MonoBehaviour:
   _closeButton: {fileID: 4575108990818996205}
   _saveButton: {fileID: 9095083714581799657}
   _textField: {fileID: 4575108990440224844}
+  _placeholderText: {fileID: 4575108992424348646}
 --- !u!1 &4575108990818996207
 GameObject:
   m_ObjectHideFlags: 0

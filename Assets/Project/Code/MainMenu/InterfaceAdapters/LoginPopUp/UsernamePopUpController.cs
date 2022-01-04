@@ -34,5 +34,13 @@ public class UsernamePopUpController
             {
                 _usernameUseCase.ChangeUsername(_writeToPlayerPrefsUseCase,_readFromPlayerPrefsUseCase, text);
             });
+
+        _viewModel
+            .PopUpOpened
+            .Subscribe((text) =>
+            {
+                Debug.Log(_readFromPlayerPrefsUseCase.Read().id);
+                text.text = _readFromPlayerPrefsUseCase.Read().id;
+            });
     }
 }

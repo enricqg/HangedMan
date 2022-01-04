@@ -18,9 +18,7 @@ public class MenuInstaller : MonoBehaviour
     [SerializeField] private GameObject _backgroundPrefab;
 
     [SerializeField] private AudioMixer _sfxMixer, _bgmMixer;
-
-    [SerializeField] private PushNotifications _pushNotificationsPrefab;
-
+    
     private IAuthUseCase _loginUseCase, _registerUseCase;
 
     private ICheckIfRegisteredUseCase _checkIfRegisteredUseCase;
@@ -40,20 +38,24 @@ public class MenuInstaller : MonoBehaviour
 
     private IEncryptDecryptDataUseCase _encryptDecryptDataUseCase;
 
+    private IUpdateUserUseCase _updateUserUseCase;
+
     private List<IDisposable> _disposables = new List<IDisposable>();
 
     private void Awake()
     {
         //INSTANTIATE
         Instantiate(_backgroundPrefab, _canvasParent);
-        var pushNotifications = Instantiate(_pushNotificationsPrefab);
 
         var mainMenuView = Instantiate(_mainMenuPrefab, _canvasParent);
         var leaderbaordMenuView = Instantiate(_leaderboardMenuPrefab, _canvasParent);
         var settingsMenuView = Instantiate(_settingsMenuPrefab, _canvasParent);
         var usernamePopUpView = Instantiate(_usernamePopUp, _canvasParent);
         var loginRegisterPopUpView = Instantiate(_loginRegisterPopUp, _canvasParent);
-
+        
+        //Push notifications
+        
+        var pushNotifications = new PushNotifications();
 
         //VIEW MODELS
         var mainMenuViewModel = new MainMenuViewModel();
@@ -84,10 +86,11 @@ public class MenuInstaller : MonoBehaviour
         _writeToPlayerPrefsUseCase = new WriteToPlayerPrefsUseCase(_encryptDecryptDataUseCase);
         _readFromPlayerPrefsUseCase = new ReadFromPlayerPrefsUseCase(_encryptDecryptDataUseCase);
         _getLeaderboardInfoUseCase = new GetLeaderboardInfoUseCase(eventDispatcher);
+        _updateUserUseCase = new UpdateUserUseCase();
 
         //CONTROLLERS
         new MainMenuController(mainMenuViewModel, settingsMenuViewModel, leaderbaordMenuViewModel, usernamePopUpViewModel, _changeSceneUseCase);
-        new SettingsMenuController(settingsMenuViewModel, mainMenuViewModel, _sfxMixer, _bgmMixer, _audioUseCase, _notificationsUseCase, pushNotifications, loginRegisterPopUpViewModel);
+        new SettingsMenuController(settingsMenuViewModel, mainMenuViewModel, _sfxMixer, _bgmMixer, _audioUseCase, _notificationsUseCase, pushNotifications, loginRegisterPopUpViewModel, _readFromPlayerPrefsUseCase,_writeToPlayerPrefsUseCase,_updateUserUseCase);
         new LeaderboardMenuController(leaderbaordMenuViewModel, mainMenuViewModel, _getLeaderboardInfoUseCase);
         new UsernamePopUpController(usernamePopUpViewModel, _usernameUseCase, _writeToPlayerPrefsUseCase, _readFromPlayerPrefsUseCase);
         new LoginRegisterPopUpController(loginRegisterPopUpViewModel, _checkIfRegisteredUseCase, _loginUseCase, _registerUseCase, _writeToPlayerPrefsUseCase);
