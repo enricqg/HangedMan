@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a426b45e-9c87-4875-ab12-8cb7ddb84ae7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Code/Init/Model/UseCases/PlayerPrefs/ReadFromPlayerPrefsUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/Init/Model/UseCases/PlayerPrefs/ReadFromPlayerPrefsUseCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Code/Init/Model/UseCases/PlayerPrefs/WriteToPlayerPrefsUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/Init/Model/UseCases/PlayerPrefs/WriteToPlayerPrefsUseCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Code/MainMenu/Firebase/PushNotifications.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/MainMenu/Firebase/PushNotifications.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Code/MainMenu/InterfaceAdapters/LoginPopUp/UsernamePopUpController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/MainMenu/InterfaceAdapters/LoginPopUp/UsernamePopUpController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Code/MainMenu/InterfaceAdapters/LoginPopUp/UsernamePopUpViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/MainMenu/InterfaceAdapters/LoginPopUp/UsernamePopUpViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Code/MainMenu/InterfaceAdapters/SettingsMenu/SettingsMenuController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/MainMenu/InterfaceAdapters/SettingsMenu/SettingsMenuController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Code/MainMenu/MenuInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/MainMenu/MenuInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Code/MainMenu/Model/UseCases/Audio/AudioUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/MainMenu/Model/UseCases/Audio/AudioUseCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Code/MainMenu/Model/UseCases/Audio/IAudioUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/MainMenu/Model/UseCases/Audio/IAudioUseCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Code/MainMenu/Model/UseCases/Authentication/LoginUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/MainMenu/Model/UseCases/Authentication/LoginUseCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Code/MainMenu/Model/UseCases/Authentication/RegisterUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/MainMenu/Model/UseCases/Authentication/RegisterUseCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Code/MainMenu/Model/UseCases/LoginRegister.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Code/MainMenu/Model/UseCases/Push Notifications/ActivatePushNotificationsUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/MainMenu/Model/UseCases/Push Notifications/ActivatePushNotificationsUseCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Code/MainMenu/Model/UseCases/Push Notifications/IActivatePushNotificationsUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/MainMenu/Model/UseCases/Push Notifications/IActivatePushNotificationsUseCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Code/MainMenu/UserInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/MainMenu/UserInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Code/MainMenu/Views/UsernamePopUpView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/MainMenu/Views/UsernamePopUpView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/UsernamePopUp.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/UsernamePopUp.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.HangedMan/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HangedMan/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +58,7 @@
       <workItem from="1639585757656" duration="2634000" />
       <workItem from="1639741640634" duration="655000" />
       <workItem from="1641315089741" duration="6750000" />
+      <workItem from="1641632267015" duration="1520000" />
     </task>
     <servers />
   </component>
