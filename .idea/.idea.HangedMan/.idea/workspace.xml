@@ -3,6 +3,32 @@
   <component name="ChangeListManager">
     <list default="true" id="a426b45e-9c87-4875-ab12-8cb7ddb84ae7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HangedMan/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HangedMan/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Code/InGame/Web/HangmanManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/InGame/Web/HangmanManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Code/InGame/Web/UriExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/InGame/Web/UriExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Scenes/PlayScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Scenes/PlayScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Authentication Image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Authentication Image.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Back Image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Back Image.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Black Rectangle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Black Rectangle.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Circle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Circle.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Green Cross.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Green Cross.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Leaderboard Image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Leaderboard Image.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Long Button.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Long Button.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Menu Background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Menu Background.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Menu Bar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Menu Bar.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Square Button.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Square Button.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/White Frame.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/White Frame.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +85,7 @@
       <workItem from="1639741640634" duration="655000" />
       <workItem from="1641315089741" duration="6750000" />
       <workItem from="1641632267015" duration="1520000" />
+      <workItem from="1641635702432" duration="2782000" />
     </task>
     <servers />
   </component>

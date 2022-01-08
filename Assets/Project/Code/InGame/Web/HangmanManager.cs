@@ -11,14 +11,9 @@ namespace Project.Code.InGame.Web
 {
     public class HangmanManager : MonoBehaviour
     {
-        [SerializeField] private Button _guessLetterButton;
-        [SerializeField] private Button _getSolutionButton;
-        [SerializeField] private TMP_InputField _inputField;
-
-        [SerializeField] private TextMeshProUGUI _hangmanText;
-        [SerializeField] private TextMeshProUGUI _tokenText;
-        [SerializeField] private TextMeshProUGUI _correctLettersText;
-        [SerializeField] private TextMeshProUGUI _incorrectLettersText;
+        //TODO : change hangmanText.
+        private TextMeshProUGUI _hangmanText;
+        
         private string _token;
         private StringBuilder _correctLetters;
         private StringBuilder _incorrectLetters;
@@ -30,8 +25,6 @@ namespace Project.Code.InGame.Web
             _correctLetters = new StringBuilder();
             _incorrectLetters = new StringBuilder();
 
-            _guessLetterButton.onClick.AddListener(GuessLetter);
-            _getSolutionButton.onClick.AddListener(GetSolution);
         }
 
         private async void Start()
@@ -50,7 +43,7 @@ namespace Project.Code.InGame.Web
         private void UpdateToken(string token)
         {
             _token = token;
-            _tokenText.SetText(_token);
+            Debug.Log("token: "+token);
         }
 
         private static string AddSpacesBetweenLetters(string word)
@@ -60,7 +53,9 @@ namespace Project.Code.InGame.Web
 
         private async void GuessLetter()
         {
-            var letter = _inputField.text;
+            //var letter = _inputField.text;
+
+            var letter = ""; // TODO: add parameter when button is pressed.
             if (string.IsNullOrEmpty(letter))
             {
                 Debug.LogError("Input text is null");
@@ -95,12 +90,10 @@ namespace Project.Code.InGame.Web
             if (response.correct)
             {
                 _correctLetters.Append($" {letter}");
-                _correctLettersText.SetText(_correctLetters.ToString());
             }
             else
             {
                 _incorrectLetters.Append($" {letter}");
-                _incorrectLettersText.SetText(_incorrectLetters.ToString());
             }
 
             _hangmanText.SetText(AddSpacesBetweenLetters(response.hangman));
