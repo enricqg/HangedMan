@@ -3,32 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="a426b45e-9c87-4875-ab12-8cb7ddb84ae7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HangedMan/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HangedMan/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Code/InGame/GameInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/InGame/GameInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Code/InGame/Interface Adapters/Game/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/InGame/Interface Adapters/Game/GameController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Code/InGame/Interface Adapters/Game/GamePresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/InGame/Interface Adapters/Game/GamePresenter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Code/InGame/Interface Adapters/Game/GameViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/InGame/Interface Adapters/Game/GameViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Code/InGame/View/GameView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/InGame/View/GameView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Project/Code/InGame/Web/HangmanManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/InGame/Web/HangmanManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Project/Code/InGame/Web/UriExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/InGame/Web/UriExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Game.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Project/Scenes/PlayScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Scenes/PlayScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Authentication Image.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Authentication Image.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Back Image.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Back Image.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Black Rectangle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Black Rectangle.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Circle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Circle.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Green Cross.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Green Cross.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Leaderboard Image.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Leaderboard Image.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Long Button.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Long Button.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Menu Background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Menu Background.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Menu Bar.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Menu Bar.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Square Button.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/Square Button.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/White Frame.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Sprites/White Frame.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +32,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="XThreadsFramesViewSplitterKey" value="0.3840909" />
     <property name="rider.run.widget.enabled.cache" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
@@ -62,10 +48,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="2424">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="2424" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -86,6 +72,10 @@
       <workItem from="1641315089741" duration="6750000" />
       <workItem from="1641632267015" duration="1520000" />
       <workItem from="1641635702432" duration="2782000" />
+      <workItem from="1641806936582" duration="1177000" />
+      <workItem from="1641916870134" duration="221000" />
+      <workItem from="1641931230288" duration="58000" />
+      <workItem from="1642002912459" duration="9571000" />
     </task>
     <servers />
   </component>
@@ -95,6 +85,17 @@
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>

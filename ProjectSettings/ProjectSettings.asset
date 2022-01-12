@@ -238,8 +238,8 @@ PlayerSettings:
   AndroidTargetArchitectures: 1
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: '{inproject}: Assets/user.keystore'
-  AndroidKeyaliasName: quilabertrivero
+  AndroidKeystoreName: D:/Universitat/3r/Interficies/user.keystore
+  AndroidKeyaliasName: riveroquilabert
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
   AndroidIsGame: 1

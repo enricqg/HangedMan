@@ -51,11 +51,8 @@ namespace Project.Code.InGame.Web
             return string.Join(" ", word.ToCharArray());
         }
 
-        private async void GuessLetter()
+        private async void GuessLetter(string letter)
         {
-            //var letter = _inputField.text;
-
-            var letter = ""; // TODO: add parameter when button is pressed.
             if (string.IsNullOrEmpty(letter))
             {
                 Debug.LogError("Input text is null");
