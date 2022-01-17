@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Code;
 using Project.Code.InGame.Web;
 using RogueDice.Scripts.Audio;
+using TMPro;
 using UnityEngine;
 using UniRx;
 
@@ -15,6 +16,8 @@ public class GameController
     private readonly IIsCompletedUseCase _isCompletedUseCase;
 
     private readonly IGuessLetterUseCase _guessLetterUseCase;
+
+    private readonly ICalculateTimeUseCase _calculateTimeUseCase;
 
     private readonly IChangeSceneUseCase _changeSceneUseCase;
     
@@ -32,11 +35,14 @@ public class GameController
         IEventDispatcherService eventDispatcherService, RestClientAdapter restClientAdapter,
         IChangeSceneUseCase changeSceneUseCase, IStartGameUseCase startGameUseCase,
         IPlayAudioUseCase playAudioUseCase, IShowAdUseCase showAdUseCase)
+        IIsCompletedUseCase isCompletedUseCase, IGuessLetterUseCase guessLetterUseCase, ICalculateTimeUseCase calculateTimeUseCase,
+        IEventDispatcherService eventDispatcherService, RestClientAdapter restClientAdapter)
     {
         _viewModel = viewModel;
         _hangManRepository = hangManRepository;
         _isCompletedUseCase = isCompletedUseCase;
         _guessLetterUseCase = guessLetterUseCase;
+        _calculateTimeUseCase = calculateTimeUseCase;
         _eventDispatcherService = eventDispatcherService;
         _restClientAdapter = restClientAdapter;
         _changeSceneUseCase = changeSceneUseCase;

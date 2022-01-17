@@ -34,6 +34,7 @@
       <change beforePath="$PROJECT_DIR$/Assets/Project/Code/InGame/GameInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/InGame/GameInstaller.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Project/Code/InGame/Interface Adapters/Game/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/InGame/Interface Adapters/Game/GameController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Project/Code/InGame/Interface Adapters/Game/GameViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/InGame/Interface Adapters/Game/GameViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Code/InGame/Model/Repositories/HangManRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/InGame/Model/Repositories/HangManRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Project/Code/InGame/View/GameView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/InGame/View/GameView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Project/Code/Init/Init.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/Init/Init.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Game.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game.prefab" afterDir="false" />
@@ -46,6 +47,12 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Project/Code/InGame/Interface Adapters/Pause/PauseViewModel.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -124,6 +131,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />

@@ -20,10 +20,13 @@ public class GameView : MonoBehaviour
 
     [SerializeField] private List<ButtonInfo> Buttons;
 
+    [SerializeField] private Button PauseButton;
+
     [SerializeField] private List<Image> HangedMan;
     
     [SerializeField] private TMP_Text WordText;
     [SerializeField] private TMP_Text ScoreText;
+    [SerializeField] private TMP_Text TimeText;
 
     [SerializeField] private GameObject YouWinGroup, YouLoseGroup, ButtonGroup;
 
@@ -34,14 +37,18 @@ public class GameView : MonoBehaviour
     
     private GameViewModel _viewModel;
 
+    private PauseViewModel _pauseViewModel;
+
     private HangManRepository _hangManRepository;
 
     private bool hasShownAd = false;
 
     public void SetViewModel(GameViewModel viewModel, HangManRepository hangManRepository)
+    public void SetViewModel(GameViewModel viewModel, PauseViewModel pauseViewModel, HangManRepository hangManRepository)
     {
         _viewModel = viewModel;
         _hangManRepository = hangManRepository;
+        _pauseViewModel = pauseViewModel;
 
         foreach (ButtonInfo button in Buttons)
         {
@@ -74,6 +81,14 @@ public class GameView : MonoBehaviour
         });
 
     _viewModel
+        PauseButton.onClick.AddListener(() =>
+        {
+            Debug.Log("Pause Game");
+            hangManRepository.PauseGame = true;
+            _pauseViewModel.IsVisible.Value = true;
+        });
+        
+        _viewModel
             .UpdateHangmanWord
             .Subscribe((response) =>
             {
@@ -129,6 +144,13 @@ public class GameView : MonoBehaviour
             .Subscribe((_) =>
             {
                 SetYouWinScreen();
+            });
+
+        _viewModel
+            .UpdateHangmanTime
+            .Subscribe((time) =>
+            {
+                TimeText.SetText("TIME: "+time);
             });
     }
 

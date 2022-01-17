@@ -446,6 +446,7 @@ MonoBehaviour:
   _canvasParent: {fileID: 1665280797}
   _gamePrefab: {fileID: 7930801734159937658, guid: 2c12e665f8a4f0240a75ac5bdf5c70eb, type: 3}
   _hangmanManager: {fileID: 0}
+  _pausePrefab: {fileID: 1179006411998315525, guid: 51676a408f0790a448b100eb821e236c, type: 3}
 --- !u!4 &2133305886
 Transform:
   m_ObjectHideFlags: 0
