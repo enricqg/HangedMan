@@ -19,6 +19,14 @@ public class GameViewModel
 
     public readonly ReactiveCommand<string> LetterPressed;
 
+    public readonly ReactiveCommand PlayerWon;
+
+    public readonly ReactiveCommand ChangeScene;
+
+    public readonly ReactiveCommand RestartGame;
+
+    public readonly ReactiveCommand ShowAd;
+
 
     public GameViewModel()
     {
@@ -33,5 +41,13 @@ public class GameViewModel
         UpdateHangmanWord = new ReactiveCommand<string>();
 
         LetterPressed = new ReactiveCommand<string>();
+
+        PlayerWon = new ReactiveCommand();
+
+        ChangeScene = new ReactiveCommand();
+
+        RestartGame = new ReactiveCommand();
+
+        ShowAd = new ReactiveCommand();
     }
 }

@@ -5,6 +5,8 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor;
+using UnityEngine.VFX;
 
 public class GameView : MonoBehaviour
 {
@@ -23,9 +25,18 @@ public class GameView : MonoBehaviour
     [SerializeField] private TMP_Text WordText;
     [SerializeField] private TMP_Text ScoreText;
 
+    [SerializeField] private GameObject YouWinGroup, YouLoseGroup, ButtonGroup;
+
+    [SerializeField] private Image WinLoseBackgroundImage;
+
+    [SerializeField] private Button AdButton, MenuButton, NextWordButton;
+    
+    
     private GameViewModel _viewModel;
 
     private HangManRepository _hangManRepository;
+
+    private bool hasShownAd = false;
 
     public void SetViewModel(GameViewModel viewModel, HangManRepository hangManRepository)
     {
@@ -41,8 +52,28 @@ public class GameView : MonoBehaviour
                 button.button.enabled = false;
             });
         }
+
+        MenuButton.onClick.AddListener(() =>
+        {
+            // Change Scene and Activate Leaderboard screen.
+            _viewModel.ChangeScene.Execute();
+        });
         
-        _viewModel
+        NextWordButton.onClick.AddListener(() =>
+        {
+            DeactivateWinScreen();
+            ActivateLetterButtons();
+            _viewModel.RestartGame.Execute();
+        });
+        
+        AdButton.onClick.AddListener(() =>
+        {
+            hasShownAd = true;
+            _viewModel.ShowAd.Execute();
+            OneMoreTry();
+        });
+
+    _viewModel
             .UpdateHangmanWord
             .Subscribe((response) =>
             {
@@ -70,10 +101,10 @@ public class GameView : MonoBehaviour
                             
                             button.buttonText.color = Color.red;
 
-                            if ((_hangManRepository.NumberOfErrors -1) == HangedMan.Count)
+                            if ((_hangManRepository.NumberOfErrors) == HangedMan.Count)
                             {
-                                // you lose
-                                Debug.Log("you lose!");
+                                HangedMan[_hangManRepository.NumberOfErrors - 1].enabled = true;
+                                SetYouLoseScreen();
                             }
                             else
                             {
@@ -92,5 +123,57 @@ public class GameView : MonoBehaviour
             {
                 ScoreText.SetText("SCORE: "+score.ToString());
             });
+
+        _viewModel
+            .PlayerWon
+            .Subscribe((_) =>
+            {
+                SetYouWinScreen();
+            });
+    }
+
+    private void SetYouWinScreen()
+    {
+        YouWinGroup.SetActive(true);
+        ButtonGroup.SetActive(true);
+        MenuButton.gameObject.SetActive(true);
+        NextWordButton.gameObject.SetActive(true);
+        WinLoseBackgroundImage.enabled = true;
+    }
+
+    private void SetYouLoseScreen()
+    {
+        YouLoseGroup.SetActive(true);
+        ButtonGroup.SetActive(true);
+        MenuButton.gameObject.SetActive(true);
+        if(!hasShownAd) AdButton.gameObject.SetActive(true);
+        WinLoseBackgroundImage.enabled = true;
+    }
+
+    private void DeactivateWinScreen()
+    {
+        YouWinGroup.SetActive(false);
+        ButtonGroup.SetActive(false);
+        MenuButton.gameObject.SetActive(false);
+        NextWordButton.gameObject.SetActive(false);
+        WinLoseBackgroundImage.enabled = false;
+    }
+
+    private void ActivateLetterButtons()
+    {
+        foreach (var button in Buttons)
+        {
+            button.button.enabled = true;
+            button.buttonText.color=Color.white;
+        }
+    }
+
+    private void OneMoreTry()
+    {
+        AdButton.gameObject.SetActive(false);
+        YouLoseGroup.SetActive(false);
+        DeactivateWinScreen();
+        HangedMan[_hangManRepository.NumberOfErrors - 1].enabled = false;
+        _hangManRepository.NumberOfErrors--;
     }
 }
