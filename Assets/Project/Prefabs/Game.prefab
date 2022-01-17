@@ -150,7 +150,7 @@ RectTransform:
   m_Children:
   - {fileID: 4612264844790809617}
   m_Father: {fileID: 7930801734159937657}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1202,7 +1202,7 @@ RectTransform:
   - {fileID: 6021560644500885218}
   - {fileID: 2572272289097998722}
   m_Father: {fileID: 7930801734159937657}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1768,8 +1768,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.0698, y: 1118.21}
-  m_SizeDelta: {x: 1152.134, y: 103.4906}
+  m_AnchoredPosition: {x: -288.57, y: 1118.21}
+  m_SizeDelta: {x: 577.14, y: 103.4906}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7930801732397229234
 CanvasRenderer:
@@ -8452,6 +8452,7 @@ MonoBehaviour:
   - {fileID: 7930801734144177450}
   WordText: {fileID: 7930801733692599325}
   ScoreText: {fileID: 7930801732397229233}
+  TimeText: {fileID: 941509008315941635}
   YouWinGroup: {fileID: 956685741146913363}
   YouLoseGroup: {fileID: 9082399255546156845}
   ButtonGroup: {fileID: 7352019115939934052}
@@ -9496,7 +9497,7 @@ RectTransform:
   m_Children:
   - {fileID: 8192937022021798046}
   m_Father: {fileID: 7930801734159937657}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

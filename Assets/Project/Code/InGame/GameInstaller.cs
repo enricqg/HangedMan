@@ -11,9 +11,7 @@ public class GameInstaller : MonoBehaviour
     [SerializeField] private RectTransform _canvasParent;
 
     [SerializeField] private GameView _gamePrefab;
-
-    [SerializeField] private HangmanManager _hangmanManager;
-
+    
     [SerializeField] private PauseView _pausePrefab;
 
     private GameViewModel _gameViewModel;
@@ -34,12 +32,12 @@ public class GameInstaller : MonoBehaviour
 
     private ICalculateTimeUseCase _calculateTimeUseCase;
 
-    
     private List<IDisposable> _disposables = new List<IDisposable>();
 
     private RestClientAdapter _restClientAdapter;
 
     private IEventDispatcherService _eventDispatcherService;
+    
     private void Awake()
     {
         // TOKEN REPOSITORY
@@ -76,9 +74,8 @@ public class GameInstaller : MonoBehaviour
         
 
         // CONTROLLER
-        new GameController(_gameViewModel,_hangmanRepository, _isCompletedUseCase,_guessLetterUseCase, _calculateTimeUseCase,_eventDispatcherService,_restClientAdapter);
         new PauseController(pauseViewModel);
-        new GameController(gameViewModel,_hangmanRepository, _isCompletedUseCase,_guessLetterUseCase,_eventDispatcherService,_restClientAdapter, _changeSceneUseCase, _startGameUseCase, _playAudioUseCase, _showAdUseCase);
+        new GameController(_gameViewModel,_hangmanRepository, _isCompletedUseCase,_guessLetterUseCase,_eventDispatcherService,_restClientAdapter, _changeSceneUseCase, _startGameUseCase, _playAudioUseCase, _showAdUseCase, _calculateTimeUseCase);
 
         // PRESENTER
         var gamePresenter = new GamePresenter(_eventDispatcherService, _gameViewModel);

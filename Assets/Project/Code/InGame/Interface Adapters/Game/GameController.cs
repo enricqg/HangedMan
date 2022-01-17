@@ -34,9 +34,7 @@ public class GameController
         IIsCompletedUseCase isCompletedUseCase, IGuessLetterUseCase guessLetterUseCase,
         IEventDispatcherService eventDispatcherService, RestClientAdapter restClientAdapter,
         IChangeSceneUseCase changeSceneUseCase, IStartGameUseCase startGameUseCase,
-        IPlayAudioUseCase playAudioUseCase, IShowAdUseCase showAdUseCase)
-        IIsCompletedUseCase isCompletedUseCase, IGuessLetterUseCase guessLetterUseCase, ICalculateTimeUseCase calculateTimeUseCase,
-        IEventDispatcherService eventDispatcherService, RestClientAdapter restClientAdapter)
+        IPlayAudioUseCase playAudioUseCase, IShowAdUseCase showAdUseCase, ICalculateTimeUseCase calculateTimeUseCase)
     {
         _viewModel = viewModel;
         _hangManRepository = hangManRepository;

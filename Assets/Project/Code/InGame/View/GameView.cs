@@ -42,8 +42,6 @@ public class GameView : MonoBehaviour
     private HangManRepository _hangManRepository;
 
     private bool hasShownAd = false;
-
-    public void SetViewModel(GameViewModel viewModel, HangManRepository hangManRepository)
     public void SetViewModel(GameViewModel viewModel, PauseViewModel pauseViewModel, HangManRepository hangManRepository)
     {
         _viewModel = viewModel;
@@ -80,7 +78,6 @@ public class GameView : MonoBehaviour
             OneMoreTry();
         });
 
-    _viewModel
         PauseButton.onClick.AddListener(() =>
         {
             Debug.Log("Pause Game");
