@@ -13,6 +13,10 @@ public class GameInstaller : MonoBehaviour
 
     [SerializeField] private HangmanManager _hangmanManager;
 
+    [SerializeField] private PauseView _pausePrefab;
+
+    private GameViewModel _gameViewModel;
+
     private HangManRepository _hangmanRepository;
 
     private IGuessLetterUseCase _guessLetterUseCase;
@@ -20,6 +24,10 @@ public class GameInstaller : MonoBehaviour
     private IIsCompletedUseCase _isCompletedUseCase;
 
     private IStartGameUseCase _startGameUseCase;
+
+    private ICalculateTimeUseCase _calculateTimeUseCase;
+
+    private IChangeSceneUseCase _changeSceneUseCase;
     
     private List<IDisposable> _disposables = new List<IDisposable>();
 
@@ -34,12 +42,18 @@ public class GameInstaller : MonoBehaviour
         
         // INSTANTIATE
         var gameView = Instantiate(_gamePrefab, _canvasParent);
+        var pauseView = Instantiate(_pausePrefab, _canvasParent);
         
         // VIEW MODEL
-        var gameViewModel = new GameViewModel();
+        _gameViewModel = new GameViewModel();
+        var pauseViewModel = new PauseViewModel();
+        
+        // TODO: mirar com deixem l'ordre.
+        _changeSceneUseCase = new ChangeSceneUseCase();
 
         // -- set view model
-        gameView.SetViewModel(gameViewModel, _hangmanRepository);
+        gameView.SetViewModel(_gameViewModel, pauseViewModel, _hangmanRepository);
+        pauseView.SetViewModel(pauseViewModel, _changeSceneUseCase, _hangmanRepository);
 
         // EVENT DISPATCHER
         _eventDispatcherService = new EventDispatcherService();
@@ -48,22 +62,34 @@ public class GameInstaller : MonoBehaviour
         _guessLetterUseCase = new GuessLetterUseCase();
         _isCompletedUseCase = new IsCompletedUseCase();
         _startGameUseCase = new StartGameUseCase();
+        _calculateTimeUseCase = new CalculateTimeUseCase();
         
         // REST CLIENT ADAPTER
         _restClientAdapter = new RestClientAdapter();
         
 
         // CONTROLLER
-        new GameController(gameViewModel,_hangmanRepository, _isCompletedUseCase,_guessLetterUseCase,_eventDispatcherService,_restClientAdapter);
+        new GameController(_gameViewModel,_hangmanRepository, _isCompletedUseCase,_guessLetterUseCase, _calculateTimeUseCase,_eventDispatcherService,_restClientAdapter);
+        new PauseController(pauseViewModel);
 
         // PRESENTER
-        var gamePresenter = new GamePresenter(_eventDispatcherService, gameViewModel);
+        var gamePresenter = new GamePresenter(_eventDispatcherService, _gameViewModel);
         _disposables.Add(gamePresenter);
     }
 
     private async void Start()
     {
         await _startGameUseCase.StartGame(_restClientAdapter, _eventDispatcherService);
+    }
+
+    private void Update()
+    {
+        // Update Game Time
+        if (!_hangmanRepository.PauseGame)
+        {
+            _calculateTimeUseCase.CalculateTime(_hangmanRepository);
+            _gameViewModel.UpdateHangmanTime.Execute((int)_hangmanRepository.Time);
+        }
     }
 
     private void OnDestroy()

@@ -16,10 +16,11 @@ public class GameViewModel
     public readonly ReactiveCommand<int> UpdateHangmanScore;
 
     public readonly ReactiveCommand<string> UpdateHangmanWord;
-
+    
     public readonly ReactiveCommand<string> LetterPressed;
 
-
+    public readonly ReactiveCommand<int> UpdateHangmanTime;
+    
     public GameViewModel()
     {
         LetterGuessed = new ReactiveCommand<KeyValuePair<GuessLetterResponse,string>>();
@@ -33,5 +34,7 @@ public class GameViewModel
         UpdateHangmanWord = new ReactiveCommand<string>();
 
         LetterPressed = new ReactiveCommand<string>();
+
+        UpdateHangmanTime = new ReactiveCommand<int>();
     }
 }

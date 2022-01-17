@@ -18,19 +18,25 @@ public class GameView : MonoBehaviour
 
     [SerializeField] private List<ButtonInfo> Buttons;
 
+    [SerializeField] private Button PauseButton;
+
     [SerializeField] private List<Image> HangedMan;
     
     [SerializeField] private TMP_Text WordText;
     [SerializeField] private TMP_Text ScoreText;
+    [SerializeField] private TMP_Text TimeText;
 
     private GameViewModel _viewModel;
 
+    private PauseViewModel _pauseViewModel;
+
     private HangManRepository _hangManRepository;
 
-    public void SetViewModel(GameViewModel viewModel, HangManRepository hangManRepository)
+    public void SetViewModel(GameViewModel viewModel, PauseViewModel pauseViewModel, HangManRepository hangManRepository)
     {
         _viewModel = viewModel;
         _hangManRepository = hangManRepository;
+        _pauseViewModel = pauseViewModel;
 
         foreach (ButtonInfo button in Buttons)
         {
@@ -41,6 +47,13 @@ public class GameView : MonoBehaviour
                 button.button.enabled = false;
             });
         }
+        
+        PauseButton.onClick.AddListener(() =>
+        {
+            Debug.Log("Pause Game");
+            hangManRepository.PauseGame = true;
+            _pauseViewModel.IsVisible.Value = true;
+        });
         
         _viewModel
             .UpdateHangmanWord
@@ -91,6 +104,13 @@ public class GameView : MonoBehaviour
             .Subscribe((score) =>
             {
                 ScoreText.SetText("SCORE: "+score.ToString());
+            });
+
+        _viewModel
+            .UpdateHangmanTime
+            .Subscribe((time) =>
+            {
+                TimeText.SetText("TIME: "+time);
             });
     }
 }

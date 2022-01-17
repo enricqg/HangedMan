@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Code;
 using Project.Code.InGame.Web;
+using TMPro;
 using UnityEngine;
 using UniRx;
 
@@ -14,18 +15,21 @@ public class GameController
     private readonly IIsCompletedUseCase _isCompletedUseCase;
 
     private readonly IGuessLetterUseCase _guessLetterUseCase;
+
+    private readonly ICalculateTimeUseCase _calculateTimeUseCase;
     
     private IEventDispatcherService _eventDispatcherService;
 
     private RestClientAdapter _restClientAdapter;
     public GameController(GameViewModel viewModel, HangManRepository hangManRepository,
-        IIsCompletedUseCase isCompletedUseCase, IGuessLetterUseCase guessLetterUseCase,
+        IIsCompletedUseCase isCompletedUseCase, IGuessLetterUseCase guessLetterUseCase, ICalculateTimeUseCase calculateTimeUseCase,
         IEventDispatcherService eventDispatcherService, RestClientAdapter restClientAdapter)
     {
         _viewModel = viewModel;
         _hangManRepository = hangManRepository;
         _isCompletedUseCase = isCompletedUseCase;
         _guessLetterUseCase = guessLetterUseCase;
+        _calculateTimeUseCase = calculateTimeUseCase;
         _eventDispatcherService = eventDispatcherService;
         _restClientAdapter = restClientAdapter;
 
@@ -69,6 +73,7 @@ public class GameController
             {
                 _guessLetterUseCase.GuessLetter(letter, _hangManRepository.Token,_restClientAdapter,_eventDispatcherService);
             });
+        
     }
     
 }
