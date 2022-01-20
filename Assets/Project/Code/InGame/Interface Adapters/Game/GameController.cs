@@ -26,6 +26,8 @@ public class GameController
     private readonly IPlayAudioUseCase _playAudioUseCase;
 
     private readonly IShowAdUseCase _showAdUseCase;
+
+    private readonly ILogEventUseCase _logEventUseCase;
     
     private IEventDispatcherService _eventDispatcherService;
     
@@ -34,13 +36,15 @@ public class GameController
         IIsCompletedUseCase isCompletedUseCase, IGuessLetterUseCase guessLetterUseCase,
         IEventDispatcherService eventDispatcherService, RestClientAdapter restClientAdapter,
         IChangeSceneUseCase changeSceneUseCase, IStartGameUseCase startGameUseCase,
-        IPlayAudioUseCase playAudioUseCase, IShowAdUseCase showAdUseCase, ICalculateTimeUseCase calculateTimeUseCase)
+        IPlayAudioUseCase playAudioUseCase, IShowAdUseCase showAdUseCase, 
+        ICalculateTimeUseCase calculateTimeUseCase, ILogEventUseCase logEventUseCase)
     {
         _viewModel = viewModel;
         _hangManRepository = hangManRepository;
         _isCompletedUseCase = isCompletedUseCase;
         _guessLetterUseCase = guessLetterUseCase;
         _calculateTimeUseCase = calculateTimeUseCase;
+        _logEventUseCase = logEventUseCase;
         _eventDispatcherService = eventDispatcherService;
         _restClientAdapter = restClientAdapter;
         _changeSceneUseCase = changeSceneUseCase;
@@ -111,6 +115,9 @@ public class GameController
             .Subscribe((_) =>
             {
                 _showAdUseCase.ShowAd();
+                _logEventUseCase.LogEvent("show_ad");
+                _logEventUseCase.LogEvent("new_chance");
+
             });
     }
 

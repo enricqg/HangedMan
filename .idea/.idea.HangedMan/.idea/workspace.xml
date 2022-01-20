@@ -3,11 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="a426b45e-9c87-4875-ab12-8cb7ddb84ae7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HangedMan/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HangedMan/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/GoogleMobileAdsPlugin.androidlib/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/GoogleMobileAdsPlugin.androidlib/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project/Code/Ads/GoogleMobileAdsDemoScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/Ads/GoogleMobileAdsDemoScript.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Project/Code/InGame/GameInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/InGame/GameInstaller.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Project/Code/InGame/Interface Adapters/Game/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/InGame/Interface Adapters/Game/GameController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Code/InGame/View/GameView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Code/InGame/View/GameView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project/Prefabs/Game.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project/Prefabs/Game.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GvhProjectSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GvhProjectSettings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +76,8 @@
       <workItem from="1642002912459" duration="9571000" />
       <workItem from="1642089419954" duration="9687000" />
       <workItem from="1642433857170" duration="341000" />
+      <workItem from="1642525174403" duration="1100000" />
+      <workItem from="1642704030129" duration="3562000" />
     </task>
     <servers />
   </component>

@@ -32,6 +32,8 @@ public class GameInstaller : MonoBehaviour
 
     private ICalculateTimeUseCase _calculateTimeUseCase;
 
+    private ILogEventUseCase _logEventUseCase;
+
     private List<IDisposable> _disposables = new List<IDisposable>();
 
     private RestClientAdapter _restClientAdapter;
@@ -68,6 +70,7 @@ public class GameInstaller : MonoBehaviour
         _playAudioUseCase = new PlayAudioUseCase();
         _showAdUseCase = new ShowAdUseCase();
         _calculateTimeUseCase = new CalculateTimeUseCase();
+        _logEventUseCase = new LogEventUseCase();
         
         // REST CLIENT ADAPTER
         _restClientAdapter = new RestClientAdapter();
@@ -75,7 +78,7 @@ public class GameInstaller : MonoBehaviour
 
         // CONTROLLER
         new PauseController(pauseViewModel);
-        new GameController(_gameViewModel,_hangmanRepository, _isCompletedUseCase,_guessLetterUseCase,_eventDispatcherService,_restClientAdapter, _changeSceneUseCase, _startGameUseCase, _playAudioUseCase, _showAdUseCase, _calculateTimeUseCase);
+        new GameController(_gameViewModel,_hangmanRepository, _isCompletedUseCase,_guessLetterUseCase,_eventDispatcherService,_restClientAdapter, _changeSceneUseCase, _startGameUseCase, _playAudioUseCase, _showAdUseCase, _calculateTimeUseCase, _logEventUseCase);
 
         // PRESENTER
         var gamePresenter = new GamePresenter(_eventDispatcherService, _gameViewModel);
@@ -85,6 +88,8 @@ public class GameInstaller : MonoBehaviour
     private async void Start()
     {
         await _startGameUseCase.StartGame(_restClientAdapter, _eventDispatcherService);
+        
+        _logEventUseCase.LogEvent("level_start");
     }
 
     private void Update()
