@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Firebase.Messaging;
 
-public class PushNotifications : MonoBehaviour
+public class PushNotifications
 {
-    public void Start()
+
+    public PushNotifications()
     {
         Firebase.Messaging.FirebaseMessaging.TokenReceived += OnTokenReceived;
         Firebase.Messaging.FirebaseMessaging.MessageReceived += OnMessageReceived;
@@ -19,5 +20,19 @@ public class PushNotifications : MonoBehaviour
     public void OnMessageReceived(object sender, Firebase.Messaging.MessageReceivedEventArgs e)
     {
         UnityEngine.Debug.Log("Received a new message from: " + e.Message.From);
+    }
+
+    public void ActivateDeactivate(bool flag)
+    {
+        if (flag)
+        {
+            Firebase.Messaging.FirebaseMessaging.TokenReceived += OnTokenReceived;
+            Firebase.Messaging.FirebaseMessaging.MessageReceived += OnMessageReceived;
+        }
+        else
+        {
+            Firebase.Messaging.FirebaseMessaging.TokenReceived -= OnTokenReceived;
+            Firebase.Messaging.FirebaseMessaging.MessageReceived -= OnMessageReceived;
+        }
     }
 }

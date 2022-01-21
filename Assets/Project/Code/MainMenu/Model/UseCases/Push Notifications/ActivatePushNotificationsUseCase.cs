@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class ActivatePushNotificationsUseCase : IActivatePushNotificationsUseCase
 {
-    public void ActivatePushNotifications(PushNotifications pushNotificationsGameObject, bool active)
+    public void ActivatePushNotifications(PushNotifications pushNotifications, bool active, IReadFromPlayerPrefsUseCase readFromPlayerPrefsUseCase, IWriteToPlayerPrefsUseCase writeToPlayerPrefsUseCase, IUpdateUserUseCase updateUserUseCase)
     {
-        pushNotificationsGameObject.gameObject.SetActive(active);
+        pushNotifications.ActivateDeactivate(active);
+
+        UserInfo user = readFromPlayerPrefsUseCase.Read();
+
+        user.pushNotifications = active;
+        
+        writeToPlayerPrefsUseCase.Write(user);
+
+        updateUserUseCase.UpdateUser(user);
     }
 }

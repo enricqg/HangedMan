@@ -15,15 +15,15 @@ public class LeaderboardMenuPresenter: IDisposable
         _viewModel = viewModel;
         _eventDispatcherService = eventDispatcherService;
 
-        _eventDispatcherService.Subscribe<Dictionary<string, Dictionary<string, string>>>(OnLeaderboardUpdated);
+        _eventDispatcherService.Subscribe<List<KeyValuePair<string, Dictionary<string, string>>>>(OnLeaderboardUpdated);
     }
 
     public void Dispose()
     {
-        _eventDispatcherService.Unsubscribe<Dictionary<string, Dictionary<string, string>>>(OnLeaderboardUpdated);
+        _eventDispatcherService.Unsubscribe<List<KeyValuePair<string, Dictionary<string, string>>>>(OnLeaderboardUpdated);
     }
 
-    void OnLeaderboardUpdated(Dictionary<string, Dictionary<string, string>> values)
+    void OnLeaderboardUpdated(List<KeyValuePair<string, Dictionary<string, string>>> values)
     {
         _viewModel.UpdateValues.Execute(values);
     }

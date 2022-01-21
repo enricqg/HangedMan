@@ -43,17 +43,18 @@ public class LeaderboardMenuView : MonoBehaviour
             .Subscribe((values) =>
             {
                 int count = 0;
-
-                foreach (var value in values)
+                
+                foreach (var user in values)
                 {
-                    string tempString = value.Key;
+                    string tempString = user.Key;
 
-                    foreach (var childValues in value.Value)
+                    foreach (var child in user.Value)
                     {
-                        tempString += " / " + childValues.Value;
+                        tempString += " / " + child.Value;
                     }
+                    
                     tempString += "s";
-
+                    
                     texts[count].text = tempString;
 
                     count++;

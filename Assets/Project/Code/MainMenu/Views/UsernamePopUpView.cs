@@ -11,6 +11,8 @@ public class UsernamePopUpView : MonoBehaviour
 
     [SerializeField] private TMP_Text _textField;
 
+    [SerializeField] private TMP_Text _placeholderText;
+
     private UsernamePopUpViewModel _viewModel;
 
     public void SetViewModel(UsernamePopUpViewModel viewModel)
@@ -33,6 +35,7 @@ public class UsernamePopUpView : MonoBehaviour
            .Subscribe((isVisible) =>
            {
                gameObject.SetActive(isVisible);
+               _viewModel.PopUpOpened.Execute(_placeholderText);
            });
     }
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Code;
+using RogueDice.Scripts.Audio;
+
 public class Init : MonoBehaviour
 {
     [SerializeField] private RectTransform _canvasParent;
@@ -18,6 +20,8 @@ public class Init : MonoBehaviour
     private IChangeSceneUseCase _changeSceneUseCase;
 
     private IEncryptDecryptDataUseCase _encryptDecryptDataUseCase;
+
+    private IPlayAudioUseCase _playAudioUseCase;
 
     private List<IDisposable> _disposables = new List<IDisposable>();
 
@@ -42,6 +46,7 @@ public class Init : MonoBehaviour
         _loginUseCase = new LoginUseCase(eventDispatcher);
         _writeToPlayerPrefsUseCase = new WriteToPlayerPrefsUseCase(_encryptDecryptDataUseCase);
         _changeSceneUseCase = new ChangeSceneUseCase();
+        _playAudioUseCase = new PlayAudioUseCase();
 
         //controller
         new InitMenuController(initMenuViewModel, _changeSceneUseCase, _writeToPlayerPrefsUseCase);
@@ -63,7 +68,7 @@ public class Init : MonoBehaviour
             _loginUseCase.Authenticate(_readFromPlayerPrefsUseCase.Read());
         }
 
-
+        _playAudioUseCase.PlayAudio("bgm",ChosenMixer.BGM);
     }
 
     private void OnDestroy()

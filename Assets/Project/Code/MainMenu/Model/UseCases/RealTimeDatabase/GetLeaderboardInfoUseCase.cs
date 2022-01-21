@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 using Firebase.Extensions;
 using Firebase.Database;
 using Code;
@@ -25,7 +26,7 @@ public class GetLeaderboardInfoUseCase : IGetLeaderboardInfoUseCase
                 var dataSnapshot = task.Result;
                 foreach (var child in dataSnapshot.Children)
                 {
-                    Debug.Log($"{child.Key}");
+                    //Debug.Log($"{child.Key}");
 
                     Dictionary<string, string> userValues = new Dictionary<string, string>();
 
@@ -33,13 +34,21 @@ public class GetLeaderboardInfoUseCase : IGetLeaderboardInfoUseCase
                     {
                         userValues.Add(reChild.Key.ToString(), reChild.Value.ToString());
 
-                        Debug.Log($"{reChild.Key}: {reChild.Value}");
+                        //Debug.Log($"{reChild.Key}: {reChild.Value}");
                     }
 
                     leaderboard.Add(child.Key.ToString(), userValues);
                 }
+                
+                // TODO: ordenar
+                var sortedUsers = leaderboard.OrderByDescending(x => int.Parse(x.Value["score"])).ToList();
 
-                _eventDispatcherService.Dispatch<Dictionary<string, Dictionary<string, string>>>(leaderboard);
+                foreach (var user in sortedUsers)
+                {
+                    Debug.Log(user.Key + " " + user.Value["score"]);
+                }
+
+                _eventDispatcherService.Dispatch<List<KeyValuePair<string, Dictionary<string, string>>>>(sortedUsers);
             });
 
         

@@ -288,6 +288,73 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1342249073
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1342249075}
+  - component: {fileID: 1342249074}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1342249074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342249073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ca2d6ee80d1f86408fcc2624e4012e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - Name: bgm
+    Clip: {fileID: 8300000, guid: 53d03f5bbe812044f8e8a62c16e630f1, type: 3}
+    Volume: 1
+    Pitch: 1
+    playOnLoop: 1
+    playOnAwake: 0
+    Source: {fileID: 0}
+  - Name: wrong_answer
+    Clip: {fileID: 8300000, guid: c7f351add9b87624f96f1fc86dda9e81, type: 3}
+    Volume: 1
+    Pitch: 1
+    playOnLoop: 0
+    playOnAwake: 0
+    Source: {fileID: 0}
+  - Name: right_answer
+    Clip: {fileID: 8300000, guid: e0049bde0aefef8448bab3885525ef3c, type: 3}
+    Volume: 1
+    Pitch: 1
+    playOnLoop: 0
+    playOnAwake: 0
+    Source: {fileID: 0}
+  sfxMixerGroup: {fileID: 24300002, guid: d520f7fdc10828f4baf8a7bf072e7843, type: 2}
+  bgmMixerGroup: {fileID: 24300002, guid: 12e90ac086ce6874da06df03755a2c07, type: 2}
+--- !u!4 &1342249075
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342249073}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1754261142
 GameObject:
   m_ObjectHideFlags: 0
