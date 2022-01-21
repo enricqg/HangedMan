@@ -33,7 +33,17 @@ public class GameInstaller : MonoBehaviour
     private ICalculateTimeUseCase _calculateTimeUseCase;
 
     private ILogEventUseCase _logEventUseCase;
+    
+    private ILogIntEventUseCase _logIntEventUseCase;
+    
+    private ILogBoolUseCase _logBoolEventUseCase;
 
+    private IUpdateLeaderboardUseCase _updateLeaderboardUseCase;
+
+    private IReadFromPlayerPrefsUseCase _readFromPlayerPrefsUseCase;
+
+    private IEncryptDecryptDataUseCase _encryptDecryptDataUseCase;
+    
     private List<IDisposable> _disposables = new List<IDisposable>();
 
     private RestClientAdapter _restClientAdapter;
@@ -71,14 +81,20 @@ public class GameInstaller : MonoBehaviour
         _showAdUseCase = new ShowAdUseCase();
         _calculateTimeUseCase = new CalculateTimeUseCase();
         _logEventUseCase = new LogEventUseCase();
-        
+        _logIntEventUseCase = new LogIntEventUseCase();
+        _logBoolEventUseCase = new LogBoolUseCase();
+        _updateLeaderboardUseCase = new UpdateLeaderboardUseCase();
+        _encryptDecryptDataUseCase = new EncryptDecryptDataUseCase();
+        _readFromPlayerPrefsUseCase = new ReadFromPlayerPrefsUseCase(_encryptDecryptDataUseCase);
         // REST CLIENT ADAPTER
         _restClientAdapter = new RestClientAdapter();
         
 
         // CONTROLLER
         new PauseController(pauseViewModel);
-        new GameController(_gameViewModel,_hangmanRepository, _isCompletedUseCase,_guessLetterUseCase,_eventDispatcherService,_restClientAdapter, _changeSceneUseCase, _startGameUseCase, _playAudioUseCase, _showAdUseCase, _calculateTimeUseCase, _logEventUseCase);
+        new GameController(_gameViewModel,_hangmanRepository, _isCompletedUseCase,_guessLetterUseCase,_eventDispatcherService,
+            _restClientAdapter, _changeSceneUseCase, _startGameUseCase, _playAudioUseCase, _showAdUseCase, _calculateTimeUseCase,
+            _logEventUseCase, _logIntEventUseCase,_logBoolEventUseCase, _updateLeaderboardUseCase, _readFromPlayerPrefsUseCase);
 
         // PRESENTER
         var gamePresenter = new GamePresenter(_eventDispatcherService, _gameViewModel);
@@ -89,7 +105,7 @@ public class GameInstaller : MonoBehaviour
     {
         await _startGameUseCase.StartGame(_restClientAdapter, _eventDispatcherService);
         
-        _logEventUseCase.LogEvent("level_start");
+        _logIntEventUseCase.LogIntEvent("level_start","level",0);
     }
 
     private void Update()

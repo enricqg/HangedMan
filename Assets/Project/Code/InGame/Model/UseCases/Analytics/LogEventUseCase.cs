@@ -8,9 +8,5 @@ public class LogEventUseCase : ILogEventUseCase
     {
         Firebase.Analytics.FirebaseAnalytics
             .LogEvent(eventName);
-        
-        Firebase.Analytics.FirebaseAnalytics
-            .LogEvent(eventName);
-
     }
 }

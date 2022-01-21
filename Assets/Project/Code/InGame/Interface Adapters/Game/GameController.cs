@@ -28,6 +28,14 @@ public class GameController
     private readonly IShowAdUseCase _showAdUseCase;
 
     private readonly ILogEventUseCase _logEventUseCase;
+
+    private readonly ILogIntEventUseCase _logIntEventUseCase;
+
+    private readonly ILogBoolUseCase _logBoolEventUseCase;
+
+    private readonly IUpdateLeaderboardUseCase _updateLeaderboardUseCase;
+
+    private readonly IReadFromPlayerPrefsUseCase _readFromPlayerPrefsUseCase;
     
     private IEventDispatcherService _eventDispatcherService;
     
@@ -37,7 +45,9 @@ public class GameController
         IEventDispatcherService eventDispatcherService, RestClientAdapter restClientAdapter,
         IChangeSceneUseCase changeSceneUseCase, IStartGameUseCase startGameUseCase,
         IPlayAudioUseCase playAudioUseCase, IShowAdUseCase showAdUseCase, 
-        ICalculateTimeUseCase calculateTimeUseCase, ILogEventUseCase logEventUseCase)
+        ICalculateTimeUseCase calculateTimeUseCase, ILogEventUseCase logEventUseCase,
+        ILogIntEventUseCase logIntEventUseCase, ILogBoolUseCase logBoolEventUseCase,
+        IUpdateLeaderboardUseCase updateLeaderboardUseCase, IReadFromPlayerPrefsUseCase readFromPlayerPrefsUseCase)
     {
         _viewModel = viewModel;
         _hangManRepository = hangManRepository;
@@ -45,6 +55,10 @@ public class GameController
         _guessLetterUseCase = guessLetterUseCase;
         _calculateTimeUseCase = calculateTimeUseCase;
         _logEventUseCase = logEventUseCase;
+        _logIntEventUseCase = logIntEventUseCase;
+        _logBoolEventUseCase = logBoolEventUseCase;
+        _updateLeaderboardUseCase = updateLeaderboardUseCase;
+        _readFromPlayerPrefsUseCase = readFromPlayerPrefsUseCase;
         _eventDispatcherService = eventDispatcherService;
         _restClientAdapter = restClientAdapter;
         _changeSceneUseCase = changeSceneUseCase;
@@ -66,6 +80,7 @@ public class GameController
                 if (_isCompletedUseCase.IsCompleted(pair.Key.hangman))
                 {
                     _hangManRepository.Score += 100;
+                    _logIntEventUseCase.LogIntEvent("level_start","level",_hangManRepository.Score/100);
                     _viewModel.UpdateHangmanScore.Execute(_hangManRepository.Score);
                     _viewModel.PlayerWon.Execute();
                 }
@@ -100,6 +115,7 @@ public class GameController
             .ChangeScene
             .Subscribe((_) =>
             {
+                _updateLeaderboardUseCase.UpdateLeaderboard(_hangManRepository,_readFromPlayerPrefsUseCase);
                 _changeSceneUseCase.ChangeScene(1);
             });
 
@@ -116,7 +132,7 @@ public class GameController
             {
                 _showAdUseCase.ShowAd();
                 _logEventUseCase.LogEvent("show_ad");
-                _logEventUseCase.LogEvent("new_chance");
+                _logBoolEventUseCase.LogBoolEvent("new_chance","view_ad",true);
 
             });
     }
